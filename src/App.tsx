@@ -14,26 +14,33 @@ const App = () => {
       timeOutId = setTimeout(() => {
         setShowSplash(false);
         sessionStorage.setItem("splashShown", "true");
-      }, 3000);
+      }, 6000);
     }
-
     return () => {
       if (timeOutId) {
         clearTimeout(timeOutId);
       }
     };
   }, [showSplash]);
+
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={showSplash ? <SplashScreen /> : <Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/article" element={<Article />} />
-        </Routes>
+        <main className="main-cont">
+          {/* <Navbar /> */}
+          <Routes>
+            <Route
+              path="/"
+              element={showSplash ? <SplashScreen /> : <Home />}
+            />
+            {/* <Route path="/" element={<SplashScreen />} /> */}
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/article" element={<Article />} />
+          </Routes>
+        </main>
       </BrowserRouter>
     </>
   );
