@@ -1,0 +1,21 @@
+.main_cont {
+  display: flex;
+  align-items: start;
+}
+
+.nav_cont {
+  background-color: lightcyan;
+  height: 100vh;
+  min-height: fit-content;
+  max-width: 12rem;
+  position: sticky;
+  top: 0;
+}
+
+.route_cont {
+  background-color: lightgreen;
+  height: 100vh;
+  overflow: auto;
+  padding: 10px;
+  flex-grow: 1;
+}

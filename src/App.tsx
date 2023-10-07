@@ -1,10 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { About, Article, Contact, Home, Portfolio, Resume } from "./pages";
 import { useState, useEffect } from "react";
-import { SplashScreen } from "./components";
+import { Navbar, SplashScreen } from "./components";
+import classes from "./App.module.css";
 const App = () => {
   const [showSplash, setShowSplash] = useState<boolean>(true);
 
+  //splash screen mechanism
   useEffect(() => {
     let timeOutId: number;
     const splashShown = sessionStorage.getItem("splashShown");
@@ -14,7 +16,7 @@ const App = () => {
       timeOutId = setTimeout(() => {
         setShowSplash(false);
         sessionStorage.setItem("splashShown", "true");
-      }, 6000);
+      }, 7000);
     }
     return () => {
       if (timeOutId) {
@@ -26,21 +28,25 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <main className="main-cont">
-          {/* <Navbar /> */}
-          <Routes>
-            <Route
-              path="/"
-              element={showSplash ? <SplashScreen /> : <Home />}
-            />
-            {/* <Route path="/" element={<SplashScreen />} /> */}
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/article" element={<Article />} />
-          </Routes>
-        </main>
+        {showSplash ? (
+          <SplashScreen />
+        ) : (
+          <main className={classes.main_cont}>
+            <div className={classes.nav_cont}>
+              <Navbar />
+            </div>
+            <div className={classes.route_cont}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/portfolio" element={<Portfolio />} />
+                <Route path="/resume" element={<Resume />} />
+                <Route path="/article" element={<Article />} />
+              </Routes>
+            </div>
+          </main>
+        )}
       </BrowserRouter>
     </>
   );
