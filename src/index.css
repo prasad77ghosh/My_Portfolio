@@ -15,3 +15,12 @@ font-family: 'Roboto Slab', serif; */
 body {
   font-family: "Roboto Slab", serif;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
