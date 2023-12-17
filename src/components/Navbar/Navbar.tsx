@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { Links } from "../../types";
 import classes from "./Navbar.module.css";
+import { FiSettings } from "react-icons/fi";
 
 const Navbar = () => {
   return (
@@ -11,11 +12,16 @@ const Navbar = () => {
       </div>
       <div className={classes.nav_cont}>
         {Links.map((item) => (
-          <Link to={item.link} className={classes.nav_list_cont} id={item.id}>
+          <Link to={item.link} className={classes.nav_list_cont} key={item.id}>
             <item.icon size={23} />
-            {item.title}
+            <p>{item.title}</p>
           </Link>
         ))}
+      </div>
+
+      <div className={classes.setting_cont}>
+        <p>Setting</p>
+        <FiSettings size={23} />
       </div>
     </nav>
   );
